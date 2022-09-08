@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_system_parameter_tree" model="ir.ui.view">
+        <field name="name">resident.system.parameter.tree</field>
+        <field name="model">resident.system.parameter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"></field>
+                <field name="description"></field>
+                <field name="p_value"></field>
+                <field name="p_status"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_system_parameter_form" model="ir.ui.view">
+        <field name="name">resident.system.parameter.form</field>
+        <field name="model">resident.system.parameter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"></field>
+                            <field name="description"></field>
+                        </group>
+                        <group>
+                            <field name="p_value"></field>
+                            <field name="p_status"></field>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_system_parameter_search">
+        <field name="name">resident.system.parameter.search</field>
+        <field name="model">resident.system.parameter</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Tên tham số"></field>
+                <filter name="p_status" string="Active" domain="[('p_status', '=','ACTIVE')]"></filter>
+                <filter name="p_status" string="Inactive" domain="[('p_status', '=','INACTIVE')]"></filter>
+                <group expand="0" string="Group By">
+                    <field name="p_status" string="Gender" context="{'group_by': 'p_status'}"></field>
+
+                </group>
+                <!--                    <searchpanel>-->
+                <!--                        <field name="gender" icon="fa-users" select="multi"/>-->
+                <!--                    </searchpanel>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_system_parameter" model="ir.actions.act_window">
+        <field name="name">Tham số cấu hình</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">resident.system.parameter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Thêm mới tham số cấu hình!</p>
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_system_parameter"
+              name="Tham số cấu hình"
+              groups="group_resident_admin"
+              parent="menu_resident_root"
+              action="action_system_parameter"
+              sequence="0"/>
+</odoo>

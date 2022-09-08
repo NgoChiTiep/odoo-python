@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="module_resident_geleximco" model="ir.module.category">
+            <field name="name">Geleximco</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="group_resident_admin" model="res.groups">
+            <field name="name">Quản trị hệ thống</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+        <record id="group_resident_user" model="res.groups">
+            <field name="name">Cư dân Geleximco</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+        <record id="group_resident_sale" model="res.groups">
+            <field name="name">Nhân viên sale</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+        <record id="group_resident_ĐLMG" model="res.groups">
+            <field name="name">Nhân viên sàn/ĐLMG</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+        <record id="group_resident_glexHomes" model="res.groups">
+            <field name="name">Nhân viên GlexHomes</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+        <record id="group_resident_abbank" model="res.groups">
+            <field name="name">Nhân viên ABBANK</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+        <record id="group_resident_investor" model="res.groups">
+            <field name="name">Chủ đầu tư</field>
+            <field name="category_id" ref="module_resident_geleximco"/>
+        </record>
+    </data>
+
+
+</odoo>

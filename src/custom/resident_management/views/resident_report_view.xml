@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_resident_report_tree" model="ir.ui.view">
+        <field name="name">resident.report.tree</field>
+        <field name="model">resident.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"></field>
+                <field name="content"></field>
+                <field name="state"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_resident_report_form" model="ir.ui.view">
+        <field name="name">resident.report.form</field>
+        <field name="model">resident.report</field>
+        <field name="arch" type="xml">
+            <form>
+                 <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                            <field name="name"></field>
+                            <field class="oe-bordered-editor" name="content" placeholder="Nhập nội dung phản ánh"></field>
+<!--                        <group>-->
+<!--                            <field name="report_status"></field>-->
+<!--                        </group>-->
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_resident_report_search">
+        <field name="name">resident.report.search</field>
+        <field name="model">resident.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Tiêu đề"></field>
+
+                <group expand="0" string="Group By">
+                    <field name="state" string="Trạng thái" context="{'group_by': 'state'}"></field>
+                </group>
+                <searchpanel>
+                    <field name="state" icon="fa-users" select="multi"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_resident_report" model="ir.actions.act_window">
+        <field name="name">Phản ánh</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">resident.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Thêm phản ánh mới tới quản trị viên!</p>
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_resident_report"
+              name="Phản ánh"
+              parent="menu_resident_root"
+              action="action_resident_report"
+              sequence="0"/>
+</odoo>
